@@ -1,0 +1,96 @@
+/***************************************
+* My adds
+****************************************/
+.title-page #background-header{
+  display: none;
+}
+
+#left70 {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:70%;
+  z-index:-10;
+}
+
+#right30 {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:30%;
+  margin: 0%
+}
+
+#left60 {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:60%;
+  z-index:-10;
+}
+
+#right40 {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:40%;
+  margin: 0%
+}
+
+#left50 {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:50%;
+  z-index:-10;
+}
+
+#right50 {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:50%;
+  margin: 0%
+}
+
+#left40 {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:40%;
+  z-index:-10;
+}
+
+#right60 {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:60%;
+  margin: 0%
+}
+
+#left30 {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:30%;
+  z-index:-10;
+}
+
+#right70 {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:70%;
+  margin: 0%
+}

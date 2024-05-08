@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Simulation and Agent-based modelling - Computational Archaeology</title>
+
+		<meta name="description" content="Made with Reveal.JS, A framework for easily creating beautiful presentations using HTML, by Hakim El Hattab">
+		<meta name="author" content="Andreas Angourakis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="reveal.js-master/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/theme/league_mod.css" id="theme">
+		
+		<!-- Custom modifications to structure slides -->
+		<link rel="stylesheet" href="myMods.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js-master/plugin/highlight/zenburn.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<di class="slides">
+            	<section data-state="title-page">
+					<h3>Simulation and Agent-based modelling</h3>
+					<h4>An introduction to simulation in archaeology</h4>
+					
+					Andreas <b>Angourakis</b></a> | <a href="https://twitter.com/AndrosSpica" target="_blank">@AndrosSpica</a>
+
+					<p style="font-size: 50%;">
+						<a href="https://andros-spica.github.io/URV-computational-archaeology-2024/simulation">
+							https://andros-spica.github.io/URV-computational-archaeology-2024/simulation</a>
+					</p>
+					
+				</section>
+				
+				<section>
+					<div id="right60">
+						<ol style="font-size: 66%;">
+							<li>What is simulation?
+								<ol>
+									<li>Definition</li>
+									<li>Place as mathematical modelling</li>
+									<li>Agent-based modelling</li>
+								</ol>
+							</li>
+							<br>
+							<li>Uses in archaeology
+								<ol>
+									<li>Methodological considerations</li>
+									<li>Application domains</li>
+									<li>Examples (case studies)</li>
+								</ol>
+							</li>
+							<br>
+							<li>Limits and expectations</li>
+							<br>
+							<li>Conclusion</li>
+						</ol>
+					</div>
+					<div id="left40" style="text-align: right;">
+						<img src="images/noun-map-1751675.svg" alt="Map by Turkkub in thenounproject.com"
+						style="width: 300px; border: none; box-shadow: none; margin-bottom: 0%;">
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">1. What is simulation?</h3>
+						<h3>1.1. Definition</h3>
+					</section>
+
+					<section>
+						<div id="left50">
+							<p style="font-size: 50%;" class="fragment">"a situation in which a particular set of conditions is created artificially in order to study or experience something that could exist in reality." (<a href="https://www.oxfordlearnersdictionaries.com/definition/american_english/simulation" target="_blank">Oxford Advanced American Dictionary</a>)</p>
+							<p style="font-size: 50%;" class="fragment">
+								"<b>a</b>: the imitative representation of the functioning of one system or process by means of the functioning of another
+								a computer simulation of an industrial process<br>
+								<b>b</b>: examination of a problem often not subject to direct experimentation by means of a simulating device"<br>
+								(<i>simulation</i>, <a href="https://www.merriam-webster.com/dictionary/simulation">Merrian-Webster</a>)
+							</p>
+
+							<p style="font-size: 50%;" class="fragment">
+								"A simulation is an <i style="color: darkorange;">imitative representation of a process or system</i> that could exist in the real world.
+								In this broad sense, simulation can often be used interchangeably with model. 
+								Sometimes a clear distinction between the two terms is made, in which simulations require the use of models; 
+								the model represents the <i style="color: darkorange;">key characteristics or behaviors</i> of the selected system or process, 
+								whereas the simulation represents the <i style="color: darkorange;">evolution of the model over time</i>. 
+								Another way to distinguish between the terms is to define simulation as experimentation with the help of a model."<br>
+								(Simulation, <a href="https://en.wikipedia.org/wiki/Simulation" target="_blank">Wikipedia</a>)
+							</p>
+							
+						</div>
+
+						<div id="right50" class="fragment" style=" text-align: center;">
+
+							<br><br>
+
+							<div class="fragment">
+								<a title="Santeri Viinamäki, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Green_watering_can.jpg">
+									<img width="200" alt="Green watering can" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Green_watering_can.jpg/512px-Green_watering_can.jpg"
+									style="border: none; box-shadow: none; margin-bottom: -5%;"></a>
+								&nbsp; &nbsp; &nbsp;
+								<a title="Icey at English Wikipedia, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Picture_maze_unsolved.png">
+									<img width="150" alt="Picture maze unsolved" src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Picture_maze_unsolved.png"
+									style="border: none; box-shadow: none; margin-bottom: -5%;"></a>
+									<br>
+									<p style="font-size: 50%;">
+										&nbsp; &nbsp; &nbsp; &nbsp;
+										<i style="color: darkorange;">reality</i> 
+										&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+										<i style="color: greenyellow;">model</i>
+									</p>
+							</div>
+
+							<div class="fragment">
+								<p style="font-size: 80%;">
+									<i style="color:skyblue;">simulation</i>
+								</p>
+								<a title="Original: User:Icey, Animation: User:MichaelFrey, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+							href="https://commons.wikimedia.org/wiki/File:Picture_maze_solving.gif"><img width="256" alt="Picture maze solving" 
+							src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Picture_maze_solving.gif"
+							style="border: none; box-shadow: none; margin-top: -2%;"></a>
+							</div>
+						</div>
+						
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">1. What is simulation?</h3>
+						<h3>1.2. Place as mathematical modelling</h3>
+					</section>
+
+					<section>
+						<h4>Models and mathematical models</h4>
+						<img src="https://github.com/Andros-Spica/modelling-simulation-graphs/blob/main/from-model-to-simulation-models/from-model-to-simulation-models_p1.png?raw=true" alt="models to math models"
+					style="width: 550px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+						<p style="font-size: 30%; text-align: center;">Diagrams available at <a href="https://github.com/Andros-Spica/modelling-simulation-graphs">https://github.com/Andros-Spica/modelling-simulation-graphs</a><br>Icons by "The Noun Project", various authors (<a href="https://thenounproject.com/">thenounproject.com</a>)</p>
+					</section>
+
+					<section>
+						<img width="256" alt="Picture maze solving -observations" 
+						src="images/Picture_maze_solving_observations.png"
+						style="border: none; box-shadow: none; margin-bottom: -2%;">
+						<p style="font-size: 50%;">observations</p>
+						<br>
+
+						<div id="left50" class="fragment">
+							<img width="256" alt="Picture maze solving - descriptive model" 
+						src="images/Picture_maze_solving_descrip-model.png"
+						style="border: none; box-shadow: none; margin-top: -30%; margin-bottom: -2%;">
+						<p style="font-size: 50%;">descriptive model<br>a model that return the output given the input...</p>
+						</div>
+						
+						<div id="right50" class="fragment">
+							<a title="Original: User:Icey, Animation: User:MichaelFrey, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" 
+							href="https://commons.wikimedia.org/wiki/File:Picture_maze_solving.gif">
+							<img width="256" alt="Picture maze solving - explanatory model" 
+							src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Picture_maze_solving.gif"
+							style="border: none; box-shadow: none; margin-top: -30%; margin-bottom: -2%;"></a>
+							<p style="font-size: 50%;">explanatory model<br>... and the definition of a mechanism</p>
+						</div>
+
+					</section>
+
+					<section>
+						<h4>Mathematical models and simulation models</h4>
+						<img src="https://github.com/Andros-Spica/modelling-simulation-graphs/blob/main/from-model-to-simulation-models/from-model-to-simulation-models_p2.png?raw=true" alt="types of math models" class="fragment"
+					style="width: 550px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+						<p style="font-size: 30%; text-align: center;">Diagrams available at <a href="https://github.com/Andros-Spica/modelling-simulation-graphs">https://github.com/Andros-Spica/modelling-simulation-graphs</a><br>Icons by "The Noun Project", various authors (<a href="https://thenounproject.com/">thenounproject.com</a>)</p>
+					</section>
+
+					<section>
+						<table>
+							<tbody>
+								<tr>
+									<td></td>
+									<td><b style="color: orange;">Input</b></td>
+									<td><b style="color: orange;">Model</b></td>
+									<td><b style="color: orange;">Output</b></td>
+								</tr>
+								<tr>
+									<td><b style="color: orange;">Machine learning</b></td>
+									<td style="font-style: italic;">known</td>
+									<td style="font-style: italic;">learned<br><i style="font-size: 60%">after implementation</i></td>
+									<td style="font-style: italic;">known+<br>predicted<br><i style="font-size: 60%">after training</i></td>
+								</tr>
+								<tr>
+									<td><b style="color: orange;">Simulation</b></td>
+									<td style="font-style: italic;">known+<br>assumed</td>
+									<td style="font-style: italic;">known<br><i style="font-size: 60%">before implementation</i></td>
+									<td style="font-style: italic;">learned<br><i style="font-size: 60%">after iterations</i><br>+searched</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>modelling steps</h3>
+						<div style="position:relative; width:800px; height:595px; margin:0 auto;">
+							<img class="fragment" width="800" height="595" src="images/Activities_def.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities_des.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities_imp.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities_ver.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities_val.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities_doc.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" width="800" height="595" src="images/Activities2.PNG" style="position:absolute;top:0;left:0;">
+						</div>
+					</section>
+				
+				</section>
+
+				<section>
+					
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">1. What is simulation?</h3>
+						<h3>1.3. Agent-based modelling</h3>
+					</section>
+					
+					<section data-background="https://upload.wikimedia.org/wikipedia/commons/e/e6/Conways_game_of_life_breeder_animation.gif">
+						<h3 style="color:black">The prism of <i style="color:greenyellow">complexity science</i></h3>
+						<div class="fragment" style="background-color: black; opacity: 0.8">
+							<ul>
+								<li class="fragment"><a href="https://en.wikipedia.org/wiki/Complex_system" target="_blank">Complex system</a></li>
+								<li class="fragment"><i style="color:greenyellow">complexity</i>: number and diversity of causal relationships</li>
+								<li class="fragment"><i style="color:brown">nonlinearity</i>, <i style="color:darkgoldenrod">self-organisation</i> and <i style="color:lightseagreen">self-similarity</i></li>
+								<li class="fragment">
+									Unifying frameworks:
+									<ul>
+										<li class="fragment">theoretical (e.g., <i style="color:greenyellow">generative social science</i>, <i style="color:greenyellow">socio-ecological systems</i>)</li>
+										<li class="fragment">methodological (e.g., <i style="color:greenyellow">open databases</i>, <i style="color:greenyellow">GIS</i>, <i style="color:greenyellow">ABM</i>) </li>
+									</ul>
+								</li>
+							</ul>
+							<br>
+						</div>
+						<br>
+						<div style="font-size: 40%">
+							<a href="https://commons.wikimedia.org/wiki/File:Conways_game_of_life_breeder_animation.gif" target="_blank">Breeder pattern in Conway's Game of Life</a>
+							<br>
+							<i>derivative work: George (talk)Conways_game_of_life_breeder.png: Hyperdeath [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons</i>
+						</div>
+					</section>
+
+					<section data-background="https://cdn-images-1.medium.com/max/1600/1*yrVzKSeqaA1O3G3HF-AHlw.gif">
+						<h3>Agent-based modelling (<i style="color:greenyellow">ABM</i> )</h3>
+						<div id="left50" style="color:black">
+							<ul>
+								<li class="fragment">dynamics</li>
+								<li class="fragment">formalisation</li>
+								<li class="fragment">rules</li>
+								<li class="fragment">population</li>
+								<li class="fragment">bottom-up</li>
+								<li class="fragment">stochasticity</li>
+							</ul>
+						</div>
+						<div id="right50">
+							<div class="fragment">&rarr; simulation</div>
+							<div class="fragment">&rarr; definitions</div>
+							<div class="fragment">&rarr; algorithms</div>
+							<div class="fragment">&rarr; distributed processes</div>
+							<div class="fragment">&rarr; emergent properties</div>
+							<div class="fragment">&rarr; probabilistic results</div>
+							<br><br>
+							<div style="font-size: 40%">
+								Flocking behaviour in '<a href="https://link.medium.com/1uqbZW0M2T" target="_blank">Behavioral systems</a>' by Danil Nagy in
+								'Generative Design', medium.com
+							</div>
+						</div>
+					</section>
+
+					<section data-background="images/Gale-Shapley-algorithm.png">
+						<div class="fragment">
+							<div id="left50">
+								<div style="width: 450px; border: none; box-shadow: none; background-color: white">
+									<a href="http://jasss.soc.surrey.ac.uk/14/3/7.html" target="_blank">
+										<img src="http://jasss.soc.surrey.ac.uk/14/3/7/rebaudo_et_al_figure1_600px.png" alt="Rebaudo et al. 2011" style="width: 450px; border: none; box-shadow: none">
+									</a>
+								</div>
+					
+								<a href="https://www.gisagents.org/2016/10/agent-based-modeling-in-geographical.html" target="_blank">
+									<img src="https://3.bp.blogspot.com/-8dBibQOLxv4/V4-Kd1QmFGI/AAAAAAAAJxU/XyvLVDVfzMEDLyRDdh1Sc3z_Nq7z2xPDQCLcB/s640/Figure1.png"
+									 alt="Heppenstall and Crooks 2016" style="width: 450px; border: none; box-shadow: none">
+								</a>
+							</div>
+							<div id="right50">
+								<a href="http://jasss.soc.surrey.ac.uk/12/1/1.html" target="_blank">
+									<img src="http://jasss.soc.surrey.ac.uk/12/1/1/fig1.jpg" alt="Galan et al. 2009" style="width: 450px; border: none; box-shadow: none">
+								</a>
+							</div>
+						</div>
+						<br>&nbsp;<br>
+						<div style="font-size: 40%; text-align: right">Background: pseudo-code for the Gale–Shapley algorithm <br>
+							to solve the <a href="https://en.wikipedia.org/wiki/Stable_marriage_problem" target="_blank">Stable Marriage Problem</a></div>
+					</section>
+
+					<section>
+						<a href="http://ccl.northwestern.edu/netlogo/models/Segregation" target="_blank">
+							<img src="images/Segregation Simple interface.png" alt="shelling-netlogo"
+							style="width: 350px; border: none; box-shadow: none">
+						</a>
+						<img src="images/Schelling-code.PNG" alt="shelling-netlogo"
+							style="width: 450px; border: none; box-shadow: none">
+						<br>
+						<i style="color:darkgoldenrod">Schelling</i>'s segregation model
+					</section>
+
+					<section>
+						<a href="https://ncase.me/polygons" target="_blank">
+							<img src="images/ncase-shelling.PNG" alt="ncase-shelling"
+							style="width: 450px; border: none; box-shadow: none; vertical-align:super">
+						</a>
+						<br>
+						<i style="color:darkgoldenrod">Schelling</i>'s segregation model
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. Uses in archaeology</h3>
+						<h3>2.1. Methodological considerations</h3>
+					</section>
+
+					<section>
+						<h4>Simulation in archaeological methodology</h4>
+						<div class="r-stack">
+							<img src="https://github.com/Andros-Spica/modelling-simulation-graphs/blob/main/representation-and-validation/representation-and-validation_notSimulation.png?raw=true" alt="types of math models"
+					style="width: 650px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+							<img src="https://github.com/Andros-Spica/modelling-simulation-graphs/blob/main/representation-and-validation/representation-and-validation.png?raw=true" alt="types of math models" class="fragment"
+					style="width: 650px; border: none; box-shadow: none; margin-bottom: 0%; background-color: azure;"/>
+						</div>
+						<p style="font-size: 30%; text-align: center;">Diagrams available at <a href="https://github.com/Andros-Spica/modelling-simulation-graphs">https://github.com/Andros-Spica/modelling-simulation-graphs</a></p>
+					</section>
+
+				</section>
+				
+				<section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. Uses in archaeology</h3>
+						<h3>2.2. Application domains</h3>
+					</section>
+
+					<section>
+						<h3>Physical-chemical dynamics</h3>
+						<ul style="font-size: 50%;">
+							<li>Artifact production: operational chain (chaîne opératóire), authorship and style, material transformations during manufacturing (<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0196777" target="_blank">Sorensen y Scherjon 2018</a>), 
+								use and deposition (<a href="https://doi.org/10.1016/j.jhevol.2021.102981" target="_blank">Gravel-Miguel et al. 2021</a>)</li>
+							<li>Site formation: distribution of artifacts and structures (<a href="https://doi.org/10.1016/j.jhevol.2021.102981" target="_blank">Gravel-Miguel et al. 2021</a>), 
+								preservation, strata formation and taphonomy (<a href="https://doi.org/10.1177/0959683615609754" target="_blank">Davies et al. 2016</a>), 
+								sample bias</li>
+						</ul>
+						<h3>Ecological dynamics</h3>
+						<ul style="font-size: 50%;">
+							<li>Climate: seasonality (<a href="https://doi.org/10.3390/quat5020025" target="_blank">Angourakis et al. 2022</a>), 
+								regional variations, climate change (<a href="https://doi.org/10.5871/bacad/9780197265758.003.0004" target="_blank">Bocquet-Appel et al. 2014</a>)</li>
+							<li>Soils: erosion and sediment accumulation (<a href="https://doi.org/10.1016/j.jasrep.2019.102115" target="_blank">Kabora et al. 2020</a>; 
+								<a href="https://doi.org/10.5194/esd-9-895-2018" target="_blank">Robinson et al. 2018</a>; 
+								<a href="https://www.sciencedirect.com/science/article/pii/S0278416518302538" target="_blank">Ullah et al. 2019</a>)</li>
+							<li>Hydrology: water availability, runoff, irrigation (<a href="https://www.sciencedirect.com/science/article/pii/S0305440311004675" target="_blank">Altaweel y Watanabe 2012</a>)</li>
+							<li>Plants: plant domestication (<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260904" target="_blank">Angourakis et al. 2022</a>); 
+								crop dynamics (<a href="https://www.mdpi.com/2571-550X/5/2/25" target="_blank">Angourakis et al. 2022</a>; 
+								<a href="http://link.springer.com/10.1007/978-3-319-31481-5_9" target="_blank">Baum et al. 2016</a>); 
+								biomass or productivity estimation (<a href="http://journal.caa-international.org/article/10.5334/jcaa.90/" target="_blank">Boogers y Daems 2022</a>; 
+								<a href="https://doi.org/10.1177%2F0894439305281500" target="_blank">Christiansen y Altaweel 2006</a>; 
+								<a href="http://dare.ubvu.vu.nl/handle/1871/55924" target="_blank">Joyce 2019</a>; 
+								<a href="https://esd.copernicus.org/articles/9/895/2018/" target="_blank">Robinson et al. 2018</a>); 
+								deforestation and wildfires (<a href="http://journal.caa-international.org/article/10.5334/jcaa.90/" target="_blank">Boogers y Daems 2022</a>; 
+								<a href="https://doi.org/10.1007/978-3-030-83643-6_9" target="_blank">Snitker 2021</a>)</li>
+							<li>Animals: population dynamics under human influence (<a href="https://www.sciencedirect.com/science/article/pii/S1040618215008642" target="_blank">Morrison y Allen 2017</a>); 
+								domestic animal population dynamics (<a href="https://www.mdpi.com/2073-445X/10/12/1366" target="_blank">Günther et al. 2021</a>); 
+								herd behavior, foraging, and transhumance (<a href="https://www.mdpi.com/2073-445X/10/12/1366" target="_blank">Günther et al. 2021</a>; 
+								<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>)</li>
+						</ul>
+
+						<p style="font-size: 33%;">See references in <a href="https://doi.org/10.51349/veg.2023.1.02" target="_blank">Angourakis 2023 Vegeta</a></p>
+						
+					</section>
+
+					<section>
+						<h3>Anthropological dynamics I</h3>
+						<ul style="font-size: 50%;">
+							<li>Individuals: pedestrian dynamics (<a href="https://doi.org/10.1068/b2726" target="_blank">Lake 2001</a>); 
+								foraging (<a href="https://www.journals.uchicago.edu/doi/10.1086/503062" target="_blank">Brantingham 2006</a>; 
+								<a href="http://link.springer.com/10.1007/978-3-319-31481-5_4" target="_blank">Oestmo et al. 2016</a>); 
+								kinship (<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>); 
+								mating, marriage, and reproduction (<a href="https://doi.org/10.1007/978-3-030-04576-0_3" target="_blank">Verhagen 2019</a>); 
+								health and mortality (<a href="https://doi.org/10.1007/978-3-030-04576-0_3" target="_blank">Verhagen 2019</a>); 
+								cognition (memory, rationality and learning) (<a href="https://scholar.uwindsor.ca/etd/5711" target="_blank">Mokom 2015</a>; 
+								<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0161766" target="_blank">Premo y Tostevin 2016</a>; 
+								<a href="http://journals.sagepub.com/doi/10.1177/1059712319872518" target="_blank">Sousa et al. 2019</a>); 
+								cooperation and competition between individuals (<a href="https://www.digitalstudies.org/article/id/7198/" target="_blank">Graham 2009</a>; 
+								<a href="http://journals.sagepub.com/doi/10.1177/1059712319872518" target="_blank">Sousa et al. 2019</a>; 
+								<a href="https://www.sciencedirect.com/science/article/pii/S027841651200058X" target="_blank">White 2013</a>);
+								learning and norm emergence (<a href="https://sit.uct.ac.za/sites/default/files/media/documents/sit_uct_ac_za/2591/2022-self-adapting_simulated_artificial_societies.pdf" target="_blank">Gower-Winter 2022</a>; 
+								<a href="https://scholar.uwindsor.ca/etd/5711" target="_blank">Mokom 2015</a>)</li>
+							<br>
+							<li>Groups: household organization and microeconomics (<a href="https://doi.org/10.1177%2F0894439305281500" target="_blank">Christiansen y Altaweel 2006</a>; 
+								<a href="http://dare.ubvu.vu.nl/handle/1871/55924" target="_blank">Joyce 2019</a>); 
+								emergence of alliances and organizations (<a href="http://krasnow.gmu.edu/socialcomplexity/files/2015/09/Cioffi-Revilla-et-al.Hierarchies-2015.pdf" target="_blank">Cioffi-Revilla et al. 2015</a>; 
+								<a href="https://www.sciencedirect.com/science/article/pii/S027841651200058X" target="_blank">White 2013</a>); 
+								cooperation and competition between groups (<a href="http://dx.doi.org/10.1007/s10816-013-9197-0" target="_blank">Angourakis et al. 2014</a>, 
+								<a href="http://dx.doi.org/10.1179/1749631414Y.0000000041" target="_blank">2015</a>, 
+								<a href="http://dx.doi.org/10.1007/s10816-016-9309-8" target="_blank">2017</a>; 
+								<a href="http://krasnow.gmu.edu/socialcomplexity/files/2015/09/Cioffi-Revilla-et-al.Hierarchies-2015.pdf" target="_blank">Cioffi-Revilla et al. 2015</a>; 
+								<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>); 
+								group mobility (<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>; 
+								<a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121888" target="_blank">Santos et al. 2015</a>); 
+								logistics and military tactics (<a href="https://doi.org/10.1162/JINH_a_00833" target="_blank">Rubio-Campillo et al. 2014</a>, 
+								<a href="https://www.jstor.org/stable/43829751" target="_blank">2015</a>; 
+								<a href="https://doi.org/10.1007/978-3-030-04576-0_3" target="_blank">Verhagen 2019</a>)</li>
+						</ul>
+
+						<p style="font-size: 33%;">See references in <a href="https://doi.org/10.51349/veg.2023.1.02" target="_blank">Angourakis 2023 Vegeta</a></p>
+					</section>
+
+					<section>
+						<h3>Anthropological dynamics II</h3>
+						<ul style="font-size: 50%;">
+							<li>Settlements: demographic dynamics (natural growth and migration) (<a href="https://doi.org/10.1007/978-3-030-04576-0_3" target="_blank">Verhagen 2019</a>); 
+								resource exploitation (<a href="http://journal.caa-international.org/article/10.5334/jcaa.90/" target="_blank">Boogers y Daems 2022</a>); 
+								trade (<a href="https://dx.plos.org/10.1371/journal.pone.0240414" target="_blank">Carrignon et al. 2020</a>; 
+								<a href="http://jasss.soc.surrey.ac.uk/23/3/10.html" target="_blank">Chliaoutakis y Chalkiadakis 2020</a>; 
+								<a href="https://books.google.com/books?hl=en&lr=&id=Vx50DwAAQBAJ&oi=fnd&pg=PA163&dq=Netlogo+simulations+and+the+use+of+transport+amphoras+in+Antiquity&ots=2e6uYvj4VH&sig=kvdr1664A8Bw8o7XKjnl12xwvCE" target="_blank">Lawall y Graham 2018</a>; 
+								<a href="https://doi.org/10.1007/s10816-013-9196-1" target="_blank">Ortega et al. 2014</a>; 
+								<a href="https://doi.org/10.1109/WSC48552.2020.9383855" target="_blank">Sakahira et al. 2020</a>); 
+								cultural evolution (<a href="https://dx.plos.org/10.1371/journal.pone.0240414" target="_blank">Carrignon et al. 2020</a>; 
+								<a href="https://sit.uct.ac.za/sites/default/files/media/documents/sit_uct_ac_za/2591/2022-self-adapting_simulated_artificial_societies.pdf" target="_blank">Gower-Winter 2022</a>; 
+								<a href="https://www.worldscientific.com/doi/abs/10.1142/S0219525911003323" target="_blank">Lake y Crema 2012</a>; 
+								<a href="https://scholar.uwindsor.ca/etd/5711" target="_blank">Mokom 2015</a>; 
+								<a href="https://doi.org/10.1109/WSC48552.2020.9383855" target="_blank">Sakahira et al. 2020</a>); 
+								settlement patterns (<a href="https://doi.org/10.1007/s10816-014-9219-6" target="_blank">Altaweel 2015</a>; 
+								<a href="https://doi.org/10.1007/s10458-016-9325-9" target="_blank">Chliaoutakis y Chalkiadakis 2016</a>); 
+								land use (<a href="http://dx.doi.org/10.1007/s10816-013-9197-0" target="_blank">Angourakis et al. 2014</a>, 
+								<a href="http://dx.doi.org/10.1007/s10816-016-9309-8" target="_blank">2017</a>; 
+								<a href="http://journal.caa-international.org/article/10.5334/jcaa.90/" target="_blank">Boogers y Daems 2022</a>; 
+								<a href="http://dare.ubvu.vu.nl/handle/1871/55924" target="_blank">Joyce 2019</a>; 
+								<a href="https://doi.org/10.5194/esd-9-895-2018" target="_blank">Robinson et al. 2018</a>; 
+								<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>; 
+								<a href="https://doi.org/10.1007/978-3-030-83643-6_9" target="_blank">Snitker 2021</a>; 
+								<a href="https://www.sciencedirect.com/science/article/pii/S0278416518302538" target="_blank">Ullah et al. 2019</a>); 
+								polytogenesis (<a href="http://krasnow.gmu.edu/socialcomplexity/files/2015/09/Cioffi-Revilla-et-al.Hierarchies-2015.pdf" target="_blank">Cioffi-Revilla et al. 2015</a>; 
+								<a href="https://escholarship.org/uc/item/7rg669rm" target="_blank">Rogers 2013</a>; 
+								<a href="https://doi.org/10.1073/pnas.1308825110" target="_blank">Turchin et al. 2013</a>); 
+								catastrophic collapse or abandonment (<a href="https://books.google.com/books?hl=en&lr=&id=-p1XSUhWbzQC&oi=fnd&pg=PP2&dq=Emergence+and+Collapse+of+Early+Villages:+Models+of+Central+Mesa+Verde+Archaeology&ots=JPXYytyDH-&sig=OdyjxuF9P9tfgUClqZgx5wFT-Dk" target="_blank">Kohler y Varien 2012</a>; 
+								<a href="https://www.cambridge.org/core/books/social-theory-in-archaeology-and-ancient-history/leaving-classic-maya-cities-agentbased-modeling-and-the-dynamics-of-diaspora/F068BF029E6359205F9321A114157F54?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark" target="_blank">McAnany et al. 201</a>5)</li>
+							<br>
+							<li>At regional to global scales: cooperation and competition between territorial states (<a href="https://doi.org/10.1073/pnas.1308825110" target="_blank">Turchin et al. 2013</a>); 
+								trade routes (<a href="http://jasss.soc.surrey.ac.uk/23/3/10.html" target="_blank">Chliaoutakis y Chalkiadakis 2020</a>; 
+								<a href="https://books.google.com/books?hl=en&lr=&id=Vx50DwAAQBAJ&oi=fnd&pg=PA163&dq=Netlogo+simulations+and+the+use+of+transport+amphoras+in+Antiquity&ots=2e6uYvj4VH&sig=kvdr1664A8Bw8o7XKjnl12xwvCE" target="_blank">Lawall y Graham 2018</a>; 
+								<a href="https://doi.org/10.1007/s10816-013-9196-1" target="_blank">Ortega et al. 2014</a>); 
+								human species dispersal (<a href="https://www.worldscientific.com/doi/abs/10.1142/S0219525913500239" target="_blank">Callegari et al. 2013</a>) 
+								and genetic and cultural diffusions (<a href="https://doi.org/10.5871/bacad/9780197265758.003.0004" target="_blank">Bocquet-Appel et al. 2014</a>; 
+								<a href="https://doi.org/10.1007/978-4-431-55363-2_8" target="_blank">Kovacevic et al. 2015</a>; 
+								<a href="https://scholar.uwindsor.ca/etd/5711" target="_blank">Mokom 2015</a>)</li>
+						</ul>
+
+						<p style="font-size: 33%;">See references in <a href="https://doi.org/10.51349/veg.2023.1.02" target="_blank">Angourakis 2023 Vegeta</a></p>
+					</section>
+					
+				</section>
+
+
+				<section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. Uses in archaeology</h3>
+						<h3>2.3. Examples</h3>
+					</section>
+				
+					<section>
+						<h3>Artificial Anasazi</h3>
+					
+						<div id="right40" style="font-size: 40%">
+							Axtell, R. L., Epstein, J. M., Dean, J. S., Gumerman, G. J., Swedlund, A. C., Harburger, J., … Parker, M. (2002).
+							Population growth and collapse in a multiagent model of the Kayenta Anasazi in Long House Valley. Proceedings of the
+							National Academy of Sciences, 99(Supplement 3), 7275–7279.
+							<a href="https://doi.org/10.1073/pnas.092080799" target="_blank">https://doi.org/10.1073/pnas.092080799</a>
+							<br>&nbsp;<br>
+							Janssen, M. A. (2009). Understanding Artificial Anasazi. Journal of Artificial Societies and Social Simulation, 12(4). <a href="http://jasss.soc.surrey.ac.uk/12/4/13.html"
+							 target="_blank">http://jasss.soc.surrey.ac.uk/12/4/13.html</a>
+						</div>
+						<div id="left60">
+							<img src="images/ArtificialAnasazi.PNG">
+						</div>
+					</section>
+					<section>
+						<h3>HOMINIDS</h3>
+						<div style="font-size: 40%">
+							Griffith, C. S., Long, B. L., and Sept, J. M. (2010). HOMINIDS: An agent-based spatial simulation model to evaluate
+							behavioral patterns of early Pleistocene hominids. Ecological Modelling, 221(5), 738–760.
+							<a href="https://doi.org/10.1016/j.ecolmodel.2009.11.009" target="_blank">https://doi.org/10.1016/j.ecolmodel.2009.11.009</a>
+						</div>
+						<div style="position:relative; width:600px; height:500px; margin:0 auto;">
+							<img src="images/griffin-et-al-2010-fig1.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" src="images/griffin-et-al-2010-fig6b.PNG" style="position:absolute;top:0;left:0;">
+						</div>
+					</section>
+					<section>
+						<h3>MedLanD</h3>
+					
+						<div style="font-size: 40%">
+							Barton, C. M., Ullah, I. I. T., Bergin, S. M., Mitasova, H., and Sarjoughian, H. (2012). Looking for the future in
+							the past: Long-term change in socioecological systems. Ecological Modelling, 241, 42–53.
+							<a href="https://doi.org/10.1016/j.ecolmodel.2012.02.010" target="_blank">https://doi.org/10.1016/J.ECOLMODEL.2012.02.010</a>
+						</div>
+						<div style="position:relative; width:800px; height:600px; margin:0 auto;">
+							<img src="images/Barton-et-al-2012-fig2.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" src="images/Barton-et-al-2012-fig12bc.PNG" style="position:absolute;top:0;left:0;">
+						</div>
+					</section>
+					<section>
+						<h3>HouseholdsWorld</h3>
+						<div style="font-size: 40%">
+							Rogers, J. D., Nichols, T., Emmerich, T., Latek, M., and Cioffi-Revilla, C. (2012). Modeling scale and variability in
+							human–environmental interactions in Inner Asia. Ecological Modelling, 241, 5–14.
+							<a href="https://doi.org/10.1016/J.ECOLMODEL.2011.11.025" target="_blank">https://doi.org/10.1016/J.ECOLMODEL.2011.11.025</a>
+						</div>
+						<div style="position:relative; width:600px; height:500px; margin:0 auto;">
+							<img src="images/Rogers-et-al-2012-fig1.PNG" style="position:absolute;top:0;left:0;">
+							<img class="fragment" src="images/Rogers-et-al-2012-fig5.PNG" style="position:absolute;top:0;left:0;">
+						</div>
+					</section>
+
+					<section>
+						<h3>MayaSim</h3>
+						<div style="font-size: 40%">
+							Heckbert, S. (2013). MayaSim. Journal of Artificial Societies & Social Simulation, 16(4), 11.
+							<a href="http://jasss.soc.surrey.ac.uk/16/4/11.html" target="_blank">http://jasss.soc.surrey.ac.uk/16/4/11.html</a>
+						</div>
+						<img src="https://jasss.soc.surrey.ac.uk/16/4/11/Figure1.png" style="width: 400px;">
+							<img src="https://jasss.soc.surrey.ac.uk/16/4/11/Figure3.png" style="width: 400px;">
+						
+						
+					</section>
+
+					<section>
+
+						<h4 style="text-align: left;">Indus Village model</h4>
+						<div id="left60">
+							<div>
+								<img src="https://pub.mdpi-res.com/quaternary/quaternary-05-00025/article_deploy/html/images/quaternary-05-00025-ag.png?1651888892" 
+								style="width: 650px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Angourakis et al. 2022, graphical abstract"/>
+								
+							</div>
+							
+						</div>
+						
+						<div id="right40">
+							
+							<img src="https://github.com/Andros-Spica/indus-village-model/blob/master/diagrams/RoadMapSoFar_2022-06.png?raw=true" 
+								style="width: 450px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Andros-Spica/diagrams
+								/RoadMapSoFar_2022-06.png"/>
+						</div>
+							
+						<p style="font-size: 30%; text-align: left;">
+							<a href="https://doi.org/10.3390/quat5020025">Angourakis et al. 2022, Quaternary</a> | repositorio: <a href="https://github.com/Andros-Spica/indus-village-model" target="_blank">https://github.com/Andros-Spica/indus-village-model</a>
+						</p>
+					</section>
+
+					<section>
+						<div id="left50" style="font-size: 80%;">
+							
+							<p style="font-size: 50%;">
+								Carrignon, S., Brughmans, T., & Romanowska, I. (2020). Tableware trade in the Roman East: Exploring cultural and economic transmission with agent-based modelling and approximate Bayesian computation. PLOS ONE, 15(11), e0240414. <a href="https://doi.org/10.1371/journal.pone.0240414">10.1371/journal.pone.0240414</a>
+							</p>
+
+							<ul style="font-size: 60%;">
+								<li>Eastern Mediterranean tableware trade (Hellenistic and Roman periods)</li>
+								<li>8730 fragments, 5 types, 178 sites (presence/absence by site-type)</li>
+								<li>A problem of cultural evolution</li>
+								<li>Simulation of cultural transmission algorithms (three hypotheses) together with a market economy model, producing spatial distributions of cultural traits of the merchants of each settlement</li>
+								<li>Stochastic exploration of the parameter space for each algorithm, evaluated in light of empirical data, using Approximate Bayesian Computing (ABC) + Population Monte Carlo (ABCPMC)</li>
+							</ul>
+						</div>
+
+						<div id="right50">
+							<h4 style="font-size: 80%;">Combined use of ABM and machine learning</h4>
+							<figure>
+								<img src="https://journals.plos.org/plosone/article/figure/image?size=inline&id=10.1371/journal.pone.0240414.g002" alt="Carrignon et al. 2020 - Fig. 2"
+							style="width: 150px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+							<br>
+							<img src="https://journals.plos.org/plosone/article/figure/image?size=inline&id=10.1371/journal.pone.0240414.g005" alt="Carrignon et al. 2020 - Fig. 5"
+							style="width: 250px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+								<figcaption style="font-size: 60%;">
+									Carrignon et al. 2020, Fig. 2 and 5
+								</figcaption>
+							</figure>
+							
+						</div>
+						<p style="font-size: 30%; text-align: left;">
+							See also:<br>Carrignon, S., Bentley, R. A., & Ruck, D. (2019). Modelling rapid online cultural transmission:<br>
+							Evaluating neutral models on Twitter data with approximate Bayesian computation.<br>
+							Palgrave Communications, 5(1), Article 1. <a href="https://doi.org/10.1057/s41599-019-0295-9" target="_blank">https://doi.org/10.1057/s41599-019-0295-9</a>
+						</p>
+					</section>
+
+				</section>
+						
+				<section>
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. Uses in archaeology</h3>
+						<h3>2.4. Learning resources</h3>
+					</section>
+					
+					<section>
+
+						<div id="left50" style="font-size: 80%;">
+							
+							<h4>Manual</h4>
+							<p style="font-size: 80%;">
+								Romanowska, Iza, Colin D. Wren, and Stefani A. Crabtree. 2021. Agent-Based Modeling for Archaeology. Electronic. SFI Press. 
+								<a href="https://doi.org/10.37911/9781947864382">https://doi.org/10.37911/9781947864382</a>
+
+								<ul>
+									<li>Theoretical and practical introduction</li>
+									<li>Does not require prior programming knowledge</li>
+									<li>Examples and exercises in NetLogo</li>
+								</ul>
+							</p>
+
+						</div>
+
+						<div id="right50">
+							<img src="https://images.squarespace-cdn.com/content/v1/5d420e5d999d0200013d33c3/1627317989462-IAE7BQS6DCVWZDUZ49Q2/Screen+Shot+2021-07-26+at+9.57.13+AM.png?format=1500w" alt="Carrignon et al. 2020 - Fig. 2"
+							style="width: 500px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+							
+						</div>
+
+					</section>
+
+					<section>
+
+						<div id="left50" style="font-size: 60%;">
+							
+							<h4>Tutorial online</h4>
+							<p style="font-size: 80%;">
+								Angourakis, A. (2022). 
+								Andros-Spica/ABM-tutorial-koeln-2022: Archaeological ABM at Cologne: from concept to application [Computer software]. Zenodo. 
+								<a href="https://doi.org/10.5281/zenodo.6668143" target="_blank">https://doi.org/10.5281/zenodo.6668143</a> 
+								<a href="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/">https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/</a>
+
+								<ul style="font-size: 80%;">
+									<li>From prototyping to the use of archaeological and environmental data</li>
+									<li>Progressive code development in NetLogo</li>
+								</ul>
+							</p>
+
+							<div style="text-align: center;">
+								<a href="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/images/0_conceptAtStart_firstTier.png" target="_blank">
+								<img src="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/images/0_conceptAtStart_firstTier.png?raw=true" alt="images/0_conceptAtStart_firstTier.png"
+								style="width: 200px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+								</a>
+							</div>
+
+						</div>
+
+						<div id="right50">
+							<div>
+								<a href="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockB_PondTrade_step10_cultural-vectors-interface.png" target="_blank">
+									<img src="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockB_PondTrade_step10_cultural-vectors-interface.png?raw=true?raw=true" alt="images/0_conceptAtStart_firstTier.png"
+									style="width: 350px; border: none; box-shadow: none; margin-bottom: -5%;"/>
+								</a>
+								<a href="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockB_PondTrade_step13_output-statistics-interface.png" target="_blank">
+									<img src="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockB_PondTrade_step13_output-statistics-interface.png?raw=true" alt="screenshots/BlockB_PondTrade_step13_output-statistics-interface.png"
+									style="width: 350px; border: none; box-shadow: none; margin-bottom: -5%;"/>
+								</a>
+								<a href="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockC_module6_MesaraTrade%20interface.png" target="_blank">
+									<img src="https://github.com/Andros-Spica/ABM-tutorial-koeln-2022/blob/main/screenshots/BlockC_module6_MesaraTrade%20interface.png?raw=true" alt="screenshots/BlockC_module6_MesaraTrade-interface.png"
+									style="width: 350px; border: none; box-shadow: none; margin-bottom: -5%;"/>
+								</a>
+							</div>
+							
+						</div>
+
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h3>3. Limits and expectations</h3>
+					</section>
+
+					<section>
+						<h3>Methodology</h3>
+						<ul>
+							<li class="fragment">Disambiguation</li>
+							<li class="fragment">Consolidation of shared models</li>
+							<li class="fragment">Virtual laboratory</li>
+							<li class="fragment">Interdisciplinarity</li>
+						</ul>
+						<br>&nbsp;<br>
+						<div class="fragment" style="font-size: 40%">
+								Epstein, J. M. (2008). Why Model? Journal of Artificial Societies and Social Simulation, 11(4), 12.<br>
+							<a href="http://jasss.soc.surrey.ac.uk/11/4/12.html" target="_blank">http://jasss.soc.surrey.ac.uk/11/4/12.html</a>
+						</div>
+					</section>
+					<section>
+						<h3>Theory</h3>
+						<ul>
+							<li class="fragment">Social emergency and socioecological systems</li>
+							<li class="fragment">Resilience, adaptation, change and collapse</li>
+							<li class="fragment">Settlement and mobility</li>
+							<li class="fragment">Behavior and cognition</li>
+						</ul>
+						<br>&nbsp;<br>
+						<div class="fragment" style="font-size: 40%">
+							Kintigh, K. W., Altschul, J. H., Beaudry, M. C., Drennan, R. D., Kinzig, A. P., Kohler, T. A., … Zeder, M. A. (2014).<br>
+							Grand challenges for archaeology. Proceedings of the National Academy of Sciences of the United States of America,
+							111(3), 879–880.<br>
+							<a href="https://doi.org/10.1073/pnas.1324000111" target="_blank">https://doi.org/10.1073/pnas.1324000111</a>
+						</div>
+						</section>
+						<section>
+							<div id="left50">
+								<a href="https://www.economist.com/finance-and-economics/2010/07/22/agents-of-change" target="_blank">
+									<img src="https://computationallegalstudies.com/wp-content/uploads/2010/07/Picture-9.jpg" alt="The Economist" 
+									style="width: 400px; border: none; box-shadow: none">
+								</a>
+							</div>
+							<div id="right50" style="font-size: 60%;">
+								<h4>Preadaptation to the archaeological perspective</h4>
+								<ul>
+									<li class="fragment">Social processes associated with materiality</li>
+									<li class="fragment">Any space and time scale</li>
+									<li class="fragment">Data collection and standardization</li>
+									<li class="fragment">Theory construction and hypothesis generation</li>
+								</ul>
+							</div>
+							<br>&nbsp;<br>
+							<div class="fragment" style="font-size: 40%">
+								Madella, M., Rondelli, B., Lancelotti, C., Balbo, A. L., Zurro, D., Rubio Campillo, X., & Stride, S. (2014).
+								Introduction to Simulating the Past. Journal of Archaeological Method and Theory, 21(2), 251–257.
+								<a href="https://doi.org/10.1007/s10816-014-9209-8" target="_blank">https://doi.org/10.1007/s10816-014-9209-8</a>
+								<br>&nbsp;<br>
+								Rogers, J. D., & Cegielski, W. H. (2017). Opinion: Building a better past with the help of agent-based modeling.
+								Proceedings of the National Academy of Sciences of the United States of America, 114(49), 12841–12844.
+								<a href="https://doi.org/10.1073/pnas.1718277114" target="_blank">https://doi.org/10.1073/pnas.1718277114</a>
+								<br>&nbsp;<br>
+								Cegielski, W. H., & Rogers, J. D. (2016). Rethinking the role of Agent-Based Modeling in archaeology. Journal of Anthropological Archaeology, 41, 283–298. 
+								<a href="https://doi.org/10.1016/J.JAA.2016.01.009" target="_blank">https://doi.org/10.1016/J.JAA.2016.01.009</a>
+								<br>&nbsp;<br>
+								Angourakis, A. (2023). El lugar de la simulación social en arqueología. Vegueta: Anuario de la Facultad de Geografía e Historia, 23(1), 15–55. 
+								<a href="https://doi.org/10.51349/veg.2023.1.02" target="_blank">https://doi.org/10.51349/veg.2023.1.02</a>
+							</div>
+						</section>
+						<section>
+							<h3>Limits</h3>
+							<ul>
+								<li class="fragment">It's not a magic solution</li>
+								<li class="fragment">Long way for standard</li>
+								<li class="fragment">Difficult learning</li>
+								<li class="fragment">Biases</li>
+								<li class="fragment">Underdeveloped validation, documentation and understanding</li>
+							</ul>
+						</section>
+						<section>
+							<h3>Future?</h3>
+							<div id="left50">
+								<ul>
+									<li>Video game design<br>(e.g. <a href="https://store.steampowered.com/app/423580/Project_Highrise/" target="_blank">Project Highrise</a>)
+									</li>
+								</ul>
+
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/xwkkblT2brc?si=RWrJAeEfe6vwbuLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								
+							</div>
+
+							<div id="right50">
+								<div>
+									<a href="https://openai.com/research/emergent-tool-use" target="_blank">
+									<img src="images/OpenAI-emergent-MA.png" alt="screenshot of OpenAI emergent behaviour example"
+								style="width: 450px; border: none; box-shadow: none; margin-bottom: 0%;"/>
+									</a>
+								</div>
+
+								<ul>
+									<li>Deep learning (e.g. <a href="https://openai.com/research/emergent-tool-use" target="_blank">robotics</a>)</li>
+								</ul>
+							</div>
+							
+						</section>
+						
+				</section>
+
+				<section>
+					<h3>4. Conclusion</h3>
+					<div id="left40">
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_and_mathematical_mod_0.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation and mathematical models in archaeology 1"/>
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_and_mathematical_mod_1.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation and mathematical models in archaeology 2"/>
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_and_mathematical_mod_2.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation and mathematical models in archaeology 3"/>
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_and_mathematical_mod_3.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation and mathematical models in archaeology 4"/>
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_in_archaeology_0.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation in archaeology 1"/>
+						<img src="images/Leonardo_Diffusion_XL_computer_simulation_in_archaeology_1.jpg" 
+					style="width: 110px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on simulation in archaeology 2"/>
+					<p style="font-size: 30%; text-align: center;">
+						Images created by <a href="https://app.leonardo.ai/" target="_blank">Leonardo.AI</a> (Diffusion XL) about
+						<br>
+						"computer simulation in archaeology" and<br>"computer simulation and mathematical modelling in archaeology".
+					</p>
+				</div>
+					<div id="right60" style="font-size: 80%;">
+					
+					<ul>
+						<li class="fragment"><i style="color: orange">Mechanism/explanation</i> is the cornerstone of simulation models</li>
+						<li class="fragment"><i style="color: orange">ABM + archeology</i>:<br>many avenues available<br>and yet to be explored</li>
+						<li class="fragment">Past social-ecological systems require <i style="color: orange">long-term modelling</i> (deep-time, complex, multidisciplinary)</li>
+					</ul>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js-master/dist/reveal.js"></script>
+        <script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="reveal.js-master/plugin/search/search.js"></script>
+		<script src="reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+
+		<script src="reveal.js-menu/menu.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/plugin.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/RecordRTC.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/recorder.js"></script>
+
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				mouseWheel: true,
+				slideNumber: 'c/t',
+/*
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm',
+					defaultDuration: 5,
+					textToSpeechURL: "http://api.voicerss.org/?key=f02cebf4e99c493d8a0048fde8a96278&hl=en-gb&c=ogg&src=",
+					advance: 0,
+					autoplay: false,
+					defaultNotes: false,
+					defaultText: false,
+					playerOpacity: 0.5
+				},
+
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: true
+				},
+
+				keyboard: { 
+					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
+					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+  				},
+*/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu
+					//,RevealAudioSlideshow, RevealAudioRecorder
+					]
+			});
+
+		</script>
+	</body>
+	<div id="background-header">
+		<div style="text-align:left; position:absolute; top:3%; left: 10%; font-size:100%; color:gray">
+			<i> Computational Archaeology - Máster Interuniversitario en Arqueología Clásica Aplicada. Investigación y Transferencia</i>
+			<br>
+			Simulation and agent-based modelling
+		</div>
+		<div style="text-align:right; position:absolute; top:3%; right: 10%; font-size:100%; color:gray">
+			Universitat Rovira i Virgili
+			<br>
+			<b>Angourakis<br>9 May 2024</b>
+		</div>
+	</div>
+</html>
