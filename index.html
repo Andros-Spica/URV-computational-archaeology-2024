@@ -6,22 +6,110 @@
 
 		<title>URV - Computational Archaeology</title>
 
+		<meta name="description" content="Made with Reveal.JS, A framework for easily creating beautiful presentations using HTML, by Hakim El Hattab">
 		<meta name="author" content="Andreas Angourakis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="reveal.js-master/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/theme/league_mod.css" id="theme">
+		
+		<!-- Custom modifications to structure slides -->
+		<link rel="stylesheet" href="myMods.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js-master/plugin/highlight/zenburn.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
 	</head>
 
 	<body>
-		<h2>Computational Archaeology 2024</h2>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<di class="slides">
+            	<section data-state="title-page">
+					<h2>Computational Archaeology 2024</h2>
 		
-		<p>
-			<small style="color:DodgerBlue;">Andreas <b>Angourakis</b></small>
-			<small>Course sessions for <a href="https://www.urv.cat/es/estudios/masteres/oferta/arqueologia-clasica-aplicada/plan-estudios/" target="_blank">"Máster Interuniversitario en Arqueología Clásica Aplicada. Investigación y Transferencia", Universitat Rovira i Virgili</a></small>
-        </p>
-        <small>
-			<p>
-                <a href="https://andros-spica.github.io/URV-computational-archaeology-2024/simulation.html">Simulation and Agent-based modelling</a>
-				<br>
-                <!--<a href="https://andros-spica.github.io/URV-computational-archaeology-2024/archaeogaming.html">Archaeogaming</a>-->
-			</p>
-		</small>
+					<p>
+						<small style="color:DodgerBlue;">Andreas <b>Angourakis</b></small>
+						<small>Course sessions for <a href="https://www.urv.cat/es/estudios/masteres/oferta/arqueologia-clasica-aplicada/plan-estudios/" target="_blank">"Máster Interuniversitario en Arqueología Clásica Aplicada. Investigación y Transferencia", Universitat Rovira i Virgili</a></small>
+        			</p>
+        			<small>
+					<p>
+                		<a href="https://andros-spica.github.io/URV-computational-archaeology-2024/simulation.html">Simulation and Agent-based modelling</a>
+						<br>
+                		<!--<a href="https://andros-spica.github.io/URV-computational-archaeology-2024/archaeogaming.html">Archaeogaming</a>-->
+					</p>
+					</small>
+				</section>
+			</di>
+		</div>
+
+		<script src="reveal.js-master/dist/reveal.js"></script>
+        <script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="reveal.js-master/plugin/search/search.js"></script>
+		<script src="reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+
+		<script src="reveal.js-menu/menu.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/plugin.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/RecordRTC.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/recorder.js"></script>
+
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				mouseWheel: true,
+				slideNumber: 'c/t',
+/*
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm',
+					defaultDuration: 5,
+					textToSpeechURL: "http://api.voicerss.org/?key=f02cebf4e99c493d8a0048fde8a96278&hl=en-gb&c=ogg&src=",
+					advance: 0,
+					autoplay: false,
+					defaultNotes: false,
+					defaultText: false,
+					playerOpacity: 0.5
+				},
+
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: true
+				},
+
+				keyboard: { 
+					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
+					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+  				},
+*/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu
+					//,RevealAudioSlideshow, RevealAudioRecorder
+					]
+			});
+
+		</script>
 	</body>
 </html>
