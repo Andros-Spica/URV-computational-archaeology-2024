@@ -31,7 +31,7 @@ Es posible que prefiera delimitar primero un conjunto de tipos de evidencia arqu
 Un modelo conceptual puede expresarse aquí de varias maneras, por ejemplo, como listas de elementos y relaciones, esquemas, diagramas, etc. Es decir, no forzaremos el uso de convenciones como [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language), aunque podría facilitar la siguiente etapa (*implementación*). Los ejemplos de diagramas UML también pueden servir de inspiración, incluso si no aprendes sus reglas. Otras convenciones más específicas también pueden ser muy útiles y relativamente fáciles de aprender:
 
 - [Diagramas causal, de "stocks" y flujos, o Forrester](https://en.wikipedia.org/wiki/System_dynamics): útil para relacionar el cambio de variables agregadas (stocks) con parámetros y otras variables (flujos).
-- [Diagramas de flujo](https://es.wikipedia.org/wiki/Flow_Diagram): útil para representar flujos de lógica, especialmente procedimientos simples de toma de decisiones.
+- [Diagramas de flujo](https://en.wikipedia.org/wiki/Flowchart): útil para representar flujos de lógica, especialmente procedimientos simples de toma de decisiones.
 
 Vea algunos ejemplos de modelado conceptual en este tutorial: https://github.com/Andros-Spica/ABM-tutorial-koeln-2022?tab=readme-ov-file#conceptual-model
 

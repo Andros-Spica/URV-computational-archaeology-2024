@@ -31,7 +31,7 @@ You may prefer to first delimitate a set of types of archaeological evidence and
 A conceptual model can be expressed here in various ways, for example as lists of elements and relationships, schemes, diagrams, etc. That is, we will not force the use of conventions such as [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language), although it could facilitate the next stage (*implementation*). Examples of UML diagrams can also offer inspiration, even if you don't learn their rules. Other more specific conventions can also be very useful and relatively easy to learn:
 
 - [Causal, "stocks" and flows, or Forrester diagrams](https://en.wikipedia.org/wiki/System_dynamics): useful for relating the change of aggregate variables (stocks) to parameters and other variables (flows).
-- [Flowcharts](https://es.wikipedia.org/wiki/Flow_Diagram): useful for representing flows of logic, especially simple decision-making procedures.
+- [Flowcharts](https://en.wikipedia.org/wiki/Flowchart): useful for representing flows of logic, especially simple decision-making procedures.
 
 See some examples of conceptual modeling in this tutorial: https://github.com/Andros-Spica/ABM-tutorial-koeln-2022?tab=readme-ov-file#conceptual-model
 
