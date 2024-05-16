@@ -18,7 +18,7 @@ Read the “Introduction” and Block A sections of the tutorial “Andros-Spica
 ### Session 2
 How do we go from data to interpretations that require causality and certain generalisation? Here we will not go into the technical side of computational modelling (i.e. programming) but rather perform a guided "pen-and-paper" exercise about the first and most challenging steps in simulation modelling: the definition of a system of interest in relation to our question/hypotheses, and the formalisation of the entities or factors and causal relationships considered to be involved. For this, you will need no more than pen and paper, a subject of interest, good old diagramming skills, and an open mind.
 
-![Session document](simulation-exercise.md)
+[Session document](simulation-exercise.md)
 
 ### References:
 
