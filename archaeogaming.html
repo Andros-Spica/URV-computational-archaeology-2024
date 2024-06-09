@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Archaeogaming - Computational Archaeology</title>
+
+		<meta name="description" content="Made with Reveal.JS, A framework for easily creating beautiful presentations using HTML, by Hakim El Hattab">
+		<meta name="author" content="Andreas Angourakis">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="reveal.js-master/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js-master/dist/theme/league_mod.css" id="theme">
+		
+		<!-- Custom modifications to structure slides -->
+		<link rel="stylesheet" href="myMods.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js-master/plugin/highlight/zenburn.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<di class="slides">
+            	<section data-state="title-page">
+					<h3>Archaeogaming</h3>
+					
+					Andreas <b>Angourakis</b></a> | <a href="https://twitter.com/AndrosSpica" target="_blank">@AndrosSpica</a>
+
+					<p style="font-size: 50%;">
+						<a href="https://andros-spica.github.io/URV-computational-archaeology-2024/simulation">
+							https://andros-spica.github.io/URV-computational-archaeology-2024/simulation</a>
+					</p>
+					
+				</section>
+				
+				<section>
+					<div id="right60">
+						<ol style="font-size: 66%;">
+							<li>What is archaeogaming?</li>
+							<br>
+							<li>Branch 1: "Archaeogaming" (proper)</li>
+							<br>
+							<li>Branch 2: "Interactive pasts"</li>
+							<br>
+							<li>Conclusions</li>
+						</ol>
+					</div>
+					<div id="left40" style="text-align: right;">
+						<img src="images/noun-map-1751675.svg" alt="Map by Turkkub in thenounproject.com"
+						style="width: 300px; border: none; box-shadow: none; margin-bottom: 0%;">
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<h3 style="color: darkorange; text-align: left;">1. What is archaeogaming?</h3>
+					</section>
+
+					<section>
+						<h3>Archaeology + video games - is it a "thing"?</h3>
+
+					</section>
+
+					<section>
+						<h3>typical "gamer"</h3>
+						<div id="left50">
+							<h4 style="margin-bottom: -20px;">20th century</h4>
+							<img src="https://www.t-mobile.com/home-internet/the-signal/_admin/uploads/2023/06/Picture6-640x448.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://mprcenter.org/review/wp-content/uploads/2014/02/2014-02_Shafer-620x330-2-Players-620x330.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://saturdaynightscreening.files.wordpress.com/2011/08/south-park-warcraft.jpg?w=506&h=393" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://i.redd.it/nh90edwizj211.jpg" style="width: 200px; margin-bottom: -20px;">
+						</div>
+
+						<div id="right50">
+							<h4 style="margin-bottom: -20px;">21st century</h4>
+							<img src="https://us.images.westend61.de/0001820488pw/female-gamer-focusing-on-her-computer-screen-as-she-navigates-a-first-person-shooter-video-game-in-high-resolution-woman-having-an-immersive-and-engaging-visual-experience-on-an-online-gaming-platform-JLPSF29925.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://www.verywellmind.com/thmb/kQ_5a5UdN6PtwIvZadoOh-yq-w4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1437813144-a168dbb56e754fc89f0506368cfecf11.jpg"  style="width: 200px; margin-bottom: -20px;">
+							<img src="https://img.freepik.com/premium-photo/diverse-group-people-using-joysticks-play-video-games-television-console-having-fun-with-gaming-competition-friends-feeling-happy-about-playing-game-social-gathering_482257-50991.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://www.ypulse.com/wp-content/uploads/2023/06/Young-LGBTQ-Gamers-See-This-Hobby-as-Self-Care_6.15.jpg" style="width: 200px; margin-bottom: -20px;">
+						</div>
+					</section>
+
+					<section>
+						
+						<h3>Definitions (under construction)</h3>
+						
+						<div id="left40" style=" text-align: center;">
+							
+							<p style="font-size: 50%;" class="fragment">"Archaeogaming is an archaeological framework which, broadly speaking, 
+								includes the study of archaeology <i style="color:darkorange">in</i> and <i style="color:darkorange">of</i> video games as well as the use of video games <i style="color:darkorange">for</i> archaeological purposes." 
+								(<a href="https://en.wikipedia.org/wiki/Archaeogaming" target="_blank">Wikipedia</a>)</p>
+							<p style="font-size: 50%;" class="fragment">
+								"the utilization and treatment of immaterial space to study created culture, specifically through videogames (...) 
+								treating a game world, a world bounded and defined by the limitations of its hardware, software and coding choices, 
+								as both a <i style="color:darkorange">closed universe</i> and as an extension of the <i style="color:darkorange">external culture</i> that created it."<br>
+								(<a href="https://en.wikipedia.org/wiki/Archaeogaming">M. Dennis 2016, cited in Wikipedia</a>)
+							</p>
+							
+						</div>
+
+						<div id="right50" class="fragment" style=" text-align: center;">
+
+							<p style="font-size: 50%;" class="fragment">
+								"the archaeology both <i style="color:darkorange">in</i> and <i style="color:darkorange">of</i> digital games"<br>
+								"(...) digital games are <i style="color:darkorange">archaeological sites, landscapes, and artifacts</i>, and the game-spaces 
+								held within those media can also be <i style="color:darkorange">understood archaeologically</i> 
+								as <i style="color:darkorange">digital built environments containing their own material culture</i>."<br>
+								"Archaeogaming does not limit its study to those video games that are set in the past or that are treated as "historical games," 
+								nor does it focus solely on the exploration and analysis of ruins or other built environments (...)"<br>
+								(<a href="https://www.berghahnbooks.com/title/ReinhardArchaeogaming">Reinhard 2018</a>, p. 2)
+							</p>
+						
+					</section>
+
+					<section data-background="images/archaeomap.jpg">
+
+					</section>
+
+					<section>
+						<h3>Two branches</h3>
+						<div id="left50" style="text-align: center;">
+							<h4>"Archaeogaming" (proper)</h4>
+							<div style="background-color: aliceblue; color: black; border-radius: 10%;">
+								As <i style="color:darkorange">archaeological</i> studies of:
+								<ul>
+									<li>Video games as artifacts<br><i style="font-size: 80%;">Real-world archaeogaming</i></li>
+									<li>Games as artifacts<br><i style="font-size: 80%;">Ludoarchaeology</i></li>
+									<li>Video games as sites<br><i style="font-size: 80%;">In-game archaeology</i></li>
+								</ul>
+							</div>
+						</div>
+
+						<div id="right50" style=" text-align: center;">
+							<h4>"Interactive pasts"</h4>
+							<div style="background-color: aliceblue; color: black; border-radius: 10%;">
+								As <i style="color:darkorange">cultural, media and game</i> studies of:
+								<ul>
+									<li>Archaeology (discipline)<br><i style="font-size: 80%;">in video games</i></li>
+									<li>The (human) past<br><i style="font-size: 80%;">in video games</i></li>
+									<li>Game development<br><i style="font-size: 80%;">for/from archaeology</i></li>
+								</ul>
+							</div>
+						</div>
+
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3 style="color: darkorange; text-align: left;">2. Branch 1: "Archaeogaming" (proper)</h3>
+					</section>
+
+					<section>
+
+						<div id="left50" style="font-size: 80%;">
+							<ul>
+								<li>Previous works exploring the intersection between archaeology (and history) to video games</li>
+								<br>
+								<li>A. Reinhard coined the term in 2013 (<a href="https://archaeogaming.com/" target="_blank">Blog</a>)</li>
+								<br>
+								<li>Field work inspired</li>
+								<br>
+								<li>Key idea:<br>applying archaeological theory and methods to video games</li>
+							</ul>
+						</div>
+
+						<div id="right50">
+							<a href="https://www.berghahnbooks.com/title/ReinhardArchaeogaming" target="_blank"></a>
+							<img src="https://www.berghahnbooks.com/covers/ReinhardArchaeogaming.jpg" style="width: 200px; margin-bottom: 0px;">
+
+							<a href="https://www.berghahnbooks.com/title/ReinhardPractical" target="_blank">
+								<img src="https://www.berghahnbooks.com/covers/ReinhardPractical.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<div style="text-align: center;">
+								<img src="https://i1.rgstatic.net/ii/profile.image/11431281216497907-1704803068019_Q512/Andrew-Reinhard.jpg" style="width: 200px; margin-bottom: -20px;">
+							</div>
+						</div>
+						
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. "Archaeogaming" (proper)</h3>
+						<h3>2.1. Video games as artifacts</h3>
+
+						<div id="left50" style="font-size: 80%;">
+							<ul>
+								<li>Video games as heritage</li>
+								<li><a href="https://en.wikipedia.org/wiki/Atari_video_game_burial" target="_blank">Atari video game burial</a>:
+									<ul>
+										<li>dumping of unsold products (1983)</li>
+										<li>excavation on 2013</li>
+										<li>A. Reinhard involved</li>
+										<li>Musealisation and re-selling of finds</li>
+									</ul></li>
+								<li>Software documentation and reconstructions</li>
+								<li>Institucionalisation<br>(e.g. <a href="https://www.criticalplay.org/" target="_blank">Critical Play</a>)</li>
+							</ul>
+						</div>
+
+						<div id="right50">
+							<p style="font-size: 33%;">
+								<br><br>
+								<a href="https://www.newyorker.com/tech/annals-of-technology/the-collectors-who-save-video-game-history-from-oblivion" target="_blank">
+									<img src="https://media.newyorker.com/photos/6310d80431be9ffd05d570dd/master/w_960,c_limit/Stephen_Video_Game_History_Foundation2.jpg" style="width: 200px; margin-bottom: 0px;">
+								</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="https://commons.wikimedia.org/wiki/File:Atari_E.T._Dig-_Alamogordo,_New_Mexico_(14036097792).jpg#/media/File:Atari_E.T._Dig-_Alamogordo,_New_Mexico_(14036097792).jpg">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Atari_E.T._Dig-_Alamogordo%2C_New_Mexico_%2814036097792%29.jpg" alt="File:Atari E.T. Dig- Alamogordo, New Mexico (14036097792).jpg" style="width: 250px; margin-bottom: 0px;">
+								</a>
+								<br>
+								(left) By Rakhmat Jaka Perkasa, (<a href="https://www.newyorker.com/tech/annals-of-technology/the-collectors-who-save-video-game-history-from-oblivion" target="_blank">The New Yorker, 2022</a>)<br>
+								(right) By <a rel="nofollow" class="external text" href="https://www.flickr.com/people/49158083@N05">taylorhatmaker</a> - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/henofthewoods/14036097792/">Atari E.T. Dig: Alamogordo, New Mexico</a>, <a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>
+									, <a href="https://commons.wikimedia.org/w/index.php?curid=32763260">Link</a>
+							</p>
+						</div>
+						
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. "Archaeogaming" (proper)</h3>
+						<h3>2.2. In-game worlds</h3>
+
+						<div id="left50">
+							<br>
+							<img src="https://archaeogaming.com/wp-content/uploads/2018/06/76-kibits-fromoverlook.jpg" style="width: 400px;">
+						</div>
+
+						<div id="right50" style="font-size: 80%;">
+							<ul>
+								<li>In-game worlds as co-creation:
+									<ul>
+										<li>game design (developers)</li>
+										<li>game play (players)</li>
+										<li>"culturally vocal" object</li>
+									</ul>
+								</li>
+								<li>Research goals close to sociology/psychology</li>
+								<li>Purposeful application of archaeological methods
+									<br>
+									e.g. <a href="https://archaeogaming.com/2018/07/25/new-archaeology-in-no-mans-sky-next/" target="_blank">No Man's Sky Archaeological Survey</a>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/lyNIjJrZSEI?si=RPKEWbUlYOpijGax" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">2. "Archaeogaming" (proper)</h3>
+						<h3>2.3. Ludoarchaeology</h3>
+
+						<div id="left60" style="font-size: 80%;">
+							<ul>
+								<li>History and material history of games and game play</li>
+								<br>
+								<li>Reconstruction of game rules out of written sources and archaeological finds
+									<br>e.g. <a href="https://locusludi.ch/" target="_blank">ERC project "Locus Ludi"</a>
+									- <a href="https://elearning.unifr.ch/astragaloi/" target="_blank">Astragaloi</a></li>
+									<br>
+								<li>Game play experiments
+									<br>e.g. <a href="https://pastatplay.com/" target="_blank">Past-at-Play</a> tabletop recording
+								</li>
+							</ul>
+						</div>
+
+						<div id="right40" style=" text-align: center;">
+							<img src="https://i.redd.it/0g4qvsq3nnf81.jpg" style="width: 300px; margin-bottom: -20px;">
+							<img src="https://letsdigitup.wordpress.com/wp-content/uploads/2020/09/img_2904.jpg?w=495" style="width: 200px; margin-bottom: -20px;">
+						</div>
+						
+					</section>
+
+					<section>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Bf90Tr4azNM?si=x4cknBBVlva0cDci" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3 style="color: darkorange; text-align: left;">3. Branch 2: "Interactive pasts"</h3>
+					</section>
+
+					<section>
+						<div id="left50" style=" text-align: center;">
+							<br>
+							<a href="https://www.sidestone.com/books/the-interactive-past" target="_blank">
+								<img src="https://www.sidestone.com/covers/9789088904363.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<a href="https://www.sidestone.com/books/return-to-the-interactive-past" target="_blank">
+								<img src="https://m.media-amazon.com/images/I/81-jWWs63dL._AC_UF1000,1000_QL80_.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<br>
+							<a href="https://value-foundation.org/" target="_blank">
+								<img src="https://value-foundation.org/wp-content/uploads/2017/10/logo-stichting-value-highress.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+						</div>
+
+						<div id="right50" style=" text-align: center; font-size: 80%;">
+							<ul>
+								<li>Branch pushed by the "Interactive Past" Conferences (2016, 2018)</li>
+								<li><a href="https://value-foundation.org/" target="_blank">VALUE foundation</a><br>(Leuven, 2017)</li>
+								<li>Nexus between:
+									<ul>
+										<li>"Archaeogaming proper"</li>
+										<li><i style="color: darkorange;">Game designers</i></li>
+										<li><i style="color: darkorange;">Game and media researchers</i></li>
+										<li>Critics with backgrounds in archaeology, history and heritage<br>(e.g. <i style="color: darkorange;">Public Archaeology</i>)</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						
+					</section>
+
+					<section>
+						<div id="left50" style=" text-align: center;">
+							<a href="https://www.amazon.de/Video-Learning-Literacy-Second-English-ebook/dp/B00OFL6RDE" target="_blank">
+								<img src="https://m.media-amazon.com/images/I/71XNAyyEJZL._SY342_.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<a href="https://www.berghahnbooks.com/title/GrahamEnchantment" target="_blank">
+								<img src="https://www.berghahnbooks.com/covers/GrahamEnchantment.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<br>
+							<a href="https://doi.org/10.1080/08839514.2010.492172" target="_blank">
+								<img src="https://www.tandfonline.com/cms/asset/f6574f38-4417-495d-be97-3bf6512fb8bd/uaai_a_492172_o_f0005g.jpg" style="width: 400px; margin-bottom: -20px;">
+							</a>
+						</div>
+
+						<div id="right50" style=" text-align: center; font-size: 80%;">
+							<ul>
+								<li>(Video) game and <i style="color: darkorange;">didactics</i><br>(<a href="https://www.amazon.de/Video-Learning-Literacy-Second-English-ebook/dp/B00OFL6RDE" target="_blank">Gee 2014</a>)
+									<ul>
+										<li>Identity projection</li>
+										<li>Situated knowledge</li>
+										<li>Cultural models: reinforcement and challenge</li>
+									</ul>
+								</li>
+								<br>
+								<li>Tools for <i style="color: darkorange;">experiencing<br>recreated pasts</i>:
+									<br>
+									Story-telling meets 3D models, VR, AR, AI, simulation, etc</li>
+								<br>
+								<li>Participatory simulation or "<i style="color: darkorange;">reenactment</i>" (<a href="https://doi.org/10.1080/08839514.2010.492172">Bogdanovych 2010</a>)</li>
+								<li>"<i style="color: darkorange;">Enchantment</i>" (<a href="https://www.berghahnbooks.com/title/GrahamEnchantment" target="_blank">Graham 2020</a>)</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">3. Interactive pasts</h3>
+						<h3>3.1. Archaeology (discipline) in video games</h3>
+
+						
+					</section>
+					
+					<section>
+						<div id="left50">
+							<h4 style="margin-bottom: -20px;">Treasure hunter stereotype</h4>
+							<img src="https://archaeogamingco.weebly.com/uploads/1/3/6/8/136820433/picture-2_orig.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://ftw.usatoday.com/wp-content/uploads/sites/90/2022/01/uncharted-legacy-of-thieves-review-3.jpg?w=1000&h=600&crop=1" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://i0.wp.com/itsmoreofacomment.com/wp-content/uploads/2021/01/ss_03cb0ea1abc29c2a4d9480e824408ee9d1509209.1920x1080-e1610558230836.jpg?resize=960%2C511&ssl=1" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://images.gog-statics.com/1d2f98bc2c7bf02ba1b4eb0351029eb7884840d218fa69ad6f68c79568a5d4bf_product_card_v2_mobile_slider_639.jpg" style="width: 200px; margin-bottom: -20px;">
+							<p style="font-size: 50%;">
+								e.g. Indiana Jones, Lara Croft, Nate Drake (Uncharted)
+							</p>
+							<p>
+								The "Action hero"
+							</p>
+						</div>
+
+						<div id="right50">
+							<h4 style="margin-bottom: -20px;">less-known approaches</h4>
+							<a href="https://en.wikipedia.org/wiki/The_Dig_(video_game)" target="_blank">
+								<img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/The_Dig_artwork.jpg/220px-The_Dig_artwork.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+
+							<a href="https://store.steampowered.com/app/724630/ArchaeologyX/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/724630/header.jpg?t=1695401842" style="width: 200px; margin-bottom: 60px;">
+							</a>
+
+							<a href="https://store.steampowered.com/app/860550/Secrets_of_the_Past_Dion/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860550/header.jpg?t=1666551848" style="width: 200px; margin-bottom: -20px;">
+							</a>
+
+							<a href="https://www.inklestudios.com/heavensvault/" target="_blank">
+								<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Heaven%27s_Vault_cover.jpg" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							
+						</div>
+					</section>
+
+					<section>
+						<h3>Archaeology as game mechanics</h3>
+
+						<div id="left50">
+							<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860550/ss_596cf7a17c954e0199ee96263e19dde6859e9acc.600x338.jpg?t=1666551848" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://blizzardwatch.com/wp-content/uploads/2015/08/archaeology-header.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/01/minecraft.jpg?q=50&fit=crop&w=963&dpr=1.5" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/01/animal-crossing-new-horizons.jpg?q=50&fit=crop&w=963&dpr=1.5" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfwP6TbMzozSC-EmF8IbuA3oUQxITG3R9cTw&s" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/860550/ss_38995985f7d795f9b5957ffd3c864175190ae0be.600x338.jpg?t=1666551848" style="width: 200px; margin-bottom: -20px;">
+						</div>
+
+						<div id="right50" style="font-size: 80%;">
+							<ul>
+								<li><i style="color: darkorange;">Digging</i><br>
+									(revealing artifacts and structures)
+								</li>
+								<li><i style="color: darkorange;">Treasure hunting</i><br>
+									(finding/reassembling artifacts)
+								</li>
+								<li><i style="color: darkorange;">Detective work</i><br>
+									(understanding past events based on scattered clues)
+								</li>
+								<li><i style="color: darkorange;">Puzzle and management</i><br>
+									(e.g. reconstructing, cataloging, exhibiting artifacts)
+								</li>
+							</ul>
+						</div>
+						
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">3. Interactive pasts</h3>
+						<h3>3.2. The (human) past in video games</h3>
+
+					</section>
+
+					<section>
+						<h3>Past, everywhere</h3>
+						<div id="left50">
+							<h4 style="margin-bottom: -20px;">Historical or history-inspired</h4>
+							<img src="https://archaeoblog.com/wp-content/uploads/2023/06/image-1.jpg?w=940" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://peoplingthepast.com/wp-content/uploads/2022/03/acodt1.png?w=1260" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://assets.2k.com/1a6ngf98576c/01BEwdXwNWQ1usU2K9dT4v/5f5016049c8a96b63a160c8761ccccfc/2KGMKT_CivilizationVI-GS_Game-Image_Pa_01__1_.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2019/03/11103129/carthage-1024x576.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://images.ctfassets.net/wn7ipiv9ue5v/5DyXgPXEuUZYZ77AB0B0kv/3f504dd856c8a67d3f5929fec0d8131c/Ancestors_Savannah_Sabretooth.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJgG-_PDkInMNFOUcvTUHc4rl15-jc56EI0w&s" style="width: 200px; margin-bottom: -20px;">
+							<p style="font-size: 50%;">
+								e.g. Far Cry Primal, Assassin's Creed series, Civilization series, Total War series, Ancestors, Dawn of Man
+							</p>
+						</div>
+
+						<div id="right50">
+							<h4 style="margin-bottom: -20px;">Fictional (fantasy, Sci-Fi)</h4>
+							<img src="https://static.wikia.nocookie.net/masseffect/images/8/89/MEAMP_Remnant_Ruins.png" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://static.wikia.nocookie.net/elderscrolls/images/f/f2/Ruins_of_Bthalft1.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://static.wikia.nocookie.net/nomanssky_gamepedia/images/e/eb/Ruin.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://static.wikia.nocookie.net/fallout/images/1/17/CITRuins-Fallout4.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://lh6.googleusercontent.com/proxy/iPhBIFh0y3LGGCMUTRUDywBsADJsuKFmenYgmb7MbzZ5qNwbPGwcRiCQLN60ppIDDimCcjsPMvRi6ksgX95CRYUaYvzn5emu4DYRYZ317KibCKvMWg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlEYvf8JK4BEgoxb6MHLaF0T3PtsbqW95vxr7L8o_Rzgmub78MzAFct9vGGzOH-d5jmXs&usqp=CAU" style="width: 200px; margin-bottom: -20px;">
+							<p style="font-size: 50%;">
+								e.g. Mass Effect series, Elder Scrolls series, <br>No Man's Sky, Fall Out series, Resident Evil series,<br>The Longest Journey, The Banner Saga
+							</p>
+						</div>
+					</section>
+
+					<section>
+						
+						<div id="left50">
+							<h4 style="margin-bottom: -20px;">Walking simulators</h4>
+							<img src="https://assets1.ignimgs.com/2017/04/26/edithfinch-1280-1493245671809_160w.jpg?width=1280" style="width: 400px; margin-bottom: -20px;">
+							<p style="font-size: 50%; margin-bottom: -20px;">
+								Story-telling through materials
+								<br>
+								e.g. What Remains of Edith Finch, 
+							</p>
+							<br>
+							<img src="https://d3i71xaburhd42.cloudfront.net/636fd30142b11b1c2a69054397d39c209b54e7fc/6-Figure1-1.png" style="width: 400px; margin-bottom: -20px;">
+						</div>
+
+						<div id="right50">
+							<h4 style="margin-bottom: -20px;">Educational games,<br>serious games and gamification</h4>
+
+							<img src="https://www.researchgate.net/profile/Eike-Anderson/publication/230778867/figure/fig1/AS:300622051069956@1448685290976/Experiencing-Rome-Reborn-as-a-game_W640.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://www.researchgate.net/profile/Eike-Anderson/publication/230778867/figure/fig4/AS:300622055264257@1448685291127/Walk-through-Ancient-Olympia-GCP04_W640.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://theictlab.org/content/images/size/w1000/wordpress/2019/01/the_seafarers-1.jpg" style="width: 200px; margin-bottom: -20px;">
+							<img src="https://www.researchgate.net/profile/Eike-Anderson/publication/230778867/figure/fig7/AS:300622055264261@1448685291196/Reliving-the-battle-of-Brandywine-Creek-McG06_W640.jpg" style="width: 200px; margin-bottom: -20px;">
+							
+							<p style="font-size: 50%;">
+								e.g. Rome Reborn, Ancient Olympia, The Seafearers, Reliving the battle of Brandywine Creek<br>
+								(<a href="https://www.researchgate.net/publication/230778867_Serious_Games_in_Cultural_Heritage" target="_blank">Anderson et al. 2009</a>)
+								<br>
+								Avoid Zeus' Thunderbolts (<a href="" target="_blank">Antoniou et al. 2013</a>)
+							</p>
+						</div>
+						
+					</section>
+
+					<section>
+						<h4>Assassin's Creed Discovery Tours</h4>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/uh4Iy-p943M?si=4242usIoJnxwBLrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						
+					</section>
+
+					<section>
+						<h3 style="color: darkorange; font-size: 80%; text-align: left;">3. Interactive pasts</h3>
+						<h3>3.3. Game development for/from archaeology</h3>
+						
+						
+					</section>
+
+					<section>
+						<div>
+						<h4 style="margin-bottom: -20px;">Indie development</h4>
+							<a href="https://store.steampowered.com/app/1079510/Sumerians/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1079510/capsule_616x353.jpg?t=1713805873" style="width: 200px; margin-bottom: -20px;">
+							</a>
+
+							<a href="https://store.steampowered.com/app/461620/Predynastic_Egypt/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/461620/capsule_616x353.jpg?t=1667300408" style="width: 200px; margin-bottom: -20px;">
+							</a>
+
+							<a href="https://store.steampowered.com/app/667610/Ancient_Cities/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/667610/header.jpg?t=1715168728" style="width: 200px; margin-bottom: -20px;">
+							</a>
+
+							<a href="https://store.steampowered.com/app/1060230/Sapiens/" target="_blank">
+								<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1060230/header.jpg?t=1713930964" style="width: 200px; margin-bottom: -20px;">
+							</a>
+							<p style="font-size: 50%;">
+								Key role of accessible game engines
+								<br>
+								e.g. <a href="https://unity.com/ target="_blank">Unity</a>,
+								<a href="https://www.unrealengine.com/" target="_blank">Unreal</a>, <a href="https://godotengine.org/" target="_blank">Godot</a>
+							</p>
+						</div>
+
+						<div id="left60" style="margin-bottom: 40px;">
+							<h4 style="margin-bottom: -20px;">Boardgames</h4>
+							<img src="https://i0.wp.com/archaeoinformatics.net/wp-content/uploads/2022/09/karthik-balakrishnan-NrS53eUKgiE-unsplash-scaled.jpg?resize=950%2C500&ssl=1" style="width: 250px; margin-bottom: -20px;">
+							<img src="https://cf.geekdo-images.com/Z4QZQ9mOdpgC27KvWXqYjg__imagepage/img/NJcdSgV0Ty03fJR9BG6Q_LeVWLU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic1442.jpg" style="width: 200px; margin-bottom: -20px;">
+							<p style="font-size: 50%;">
+								e.g. <a href="https://carleton.ca/history/2018/shawn-graham-creates-board-game-with-visiting-scholars/" target="_blank">FORVM</a>,
+								<a href="https://boardgamegeek.com/boardgame/877/troia" target="_blank">TROIA</a>
+							</p>
+						</div>
+
+						<div id="right40">
+							<h4 style="margin-bottom: -20px;">Consultancy</h4>
+							<img src="https://i0.wp.com/archaeoinformatics.net/wp-content/uploads/2018/05/Assassins-Creed-Origins-29.05.2018-00_00_30.png?resize=570%2C285&ssl=1" style="width: 400px; margin-bottom: -20px;">
+							<p style="font-size: 50%;">
+								(<a href="https://archaeogaming.com/2019/04/19/consulting-for-ubisoft-on-assassins-creed-odyssey/" target="_blank">Reinhard 2019</a>)
+							</p>
+						</div>
+
+					</section>
+
+					<section>
+						<h4>SAMBAQUIS</h4>
+						
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/ZWtw2BbsiJ8?si=lCH7CRlzzPMARBuw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						
+						<p style="font-size: 50%;">
+							<a href="http://www.arise.mae.usp.br/#" target="_blank">ARISE</a>
+						</p>
+					</section>
+
+					<section>
+						<h4>Ancestors: Stories of Atapuerca</h4>
+						
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Ft3lNfuDw14?si=HOY9B7ZOFX0ndWtN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						
+						<p style="font-size: 50%;">
+							<a href="https://murphystoastgames.com/" target="_blank">Murphy's Toast Games</a>
+							<br>
+							Check <a href="https://www.didpatri.cat/investigadors/xavier-rubio-campillo/" target="_blank">
+								Xavier Rubio-Campillo (DIDPATRI, Universitat de Barcelona)</a>
+						</p>
+					</section>
+					
+					<section>
+						<h4 style="color: darkorange; font-size: 80%;">Archaeogaming and simulation</h4>
+						<h4>Evolving Planet</h4>
+						
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/44QttNIRP04?si=kDiLGmxl1BbemOvi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+						<p style="font-size: 50%;">
+							<a href="https://murphystoastgames.com/" target="_blank">Murphy's Toast</a>
+							<br>
+							Check <a href="https://www.didpatri.cat/investigadors/xavier-rubio-campillo/" target="_blank">
+								Xavier Rubio-Campillo (DIDPATRI, Universitat de Barcelona)</a>
+						</p>
+					</section>
+
+					<section>
+						<h4 style="color: darkorange; font-size: 80%;">Archaeogaming and simulation</h4>
+						<h4>Quantum Leaper</h4>
+						
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/CTAE_5iJKjM?si=dpVGAtsmWC2O5QQv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						
+						<p style="font-size: 50%;">
+							<a href="https://www.berghahnbooks.com/title/GrahamEnchantment" target="_blank">Graham 2020</a>, <a href="https://link.springer.com/chapter/10.1007/978-3-030-92843-8_15" target="_blank">Szczepanska 2022</a>, 
+						</p>
+					</section>
+					
+				</section>
+
+				<section>
+
+					<section>
+						<h3 style="color: darkorange; text-align: left;">4. Conclusions</h3>
+
+						<div id="left60" style="font-size: 60%;">
+							<ul>
+								<li class="fragment">Archaeogaming is an academic "thing",<br>
+									though <i style="color: orange">diverse</i>
+								</li>
+								<br>
+								<li class="fragment">Video games offer an opportunity for <i style="color: orange">engagement</i><br>
+									whether for research, didactics, or public transference
+								</li>
+								<br>
+								<li class="fragment">Trade-off between <i style="color: orange">game design priorities</i><br>
+									(playable, fun, sellable, etc) and<br>
+									<i style="color: orange">realism, precision, authenticity, ethical sensitivity, and didactic value</i>
+								</li>
+							</ul>
+						</div>
+
+						<div id="right40">
+							<img src="images/Default_In_a_breathtakingly_immersive_digital_landscape_the_co_2 (1).jpg" 
+						style="width: 500px; border: none; box-shadow: none; margin-bottom: 0%;" alt="Leonardo AI take on archaeogaming"/>
+						<p style="font-size: 30%; text-align: center;">
+							Image created by <a href="https://app.leonardo.ai/" target="_blank">Leonardo.AI</a> (Leonardo Kino XL)
+						</p>
+						</div>
+
+					</section>
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="reveal.js-master/dist/reveal.js"></script>
+        <script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+		<script src="reveal.js-master/plugin/notes/notes.js"></script>
+		<script src="reveal.js-master/plugin/search/search.js"></script>
+		<script src="reveal.js-master/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+
+		<script src="reveal.js-menu/menu.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/plugin.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/RecordRTC.js"></script>
+		<script src="reveal.js-plugins/audio-slideshow/recorder.js"></script>
+
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				mouseWheel: true,
+				slideNumber: 'c/t',
+/*
+				audio: {
+					prefix: 'audio/',
+					suffix: '.webm',
+					defaultDuration: 5,
+					textToSpeechURL: "http://api.voicerss.org/?key=f02cebf4e99c493d8a0048fde8a96278&hl=en-gb&c=ogg&src=",
+					advance: 0,
+					autoplay: false,
+					defaultNotes: false,
+					defaultText: false,
+					playerOpacity: 0.5
+				},
+
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: true
+				},
+
+				keyboard: { 
+					82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
+					90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+  				},
+*/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu
+					//,RevealAudioSlideshow, RevealAudioRecorder
+					]
+			});
+
+		</script>
+	</body>
+	<div id="background-header">
+		<div style="text-align:left; position:absolute; top:3%; left: 10%; font-size:100%; color:gray">
+			<i> Computational Archaeology - Máster Interuniversitario en Arqueología Clásica Aplicada. Investigación y Transferencia</i>
+			<br>
+			Archaeogaming
+		</div>
+		<div style="text-align:right; position:absolute; top:3%; right: 10%; font-size:100%; color:gray">
+			Universitat Rovira i Virgili
+			<br>
+			<b>Angourakis<br>30 May 2024</b>
+		</div>
+	</div>
+</html>
