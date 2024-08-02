@@ -74,6 +74,8 @@ This is an introduction to the concept and field of research generally known as 
 
 Slides: https://andros-spica.github.io/URV-computational-archaeology-2024/
 
+Recorded lecture (Spanish): https://youtu.be/Nu4B8gp_jIw
+
 ### Autonomous work
 Read at least one of the articles or chapters from the reference list.
 
