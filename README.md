@@ -1,4 +1,4 @@
-# URV-computational-archaeology-2024
+# Master sessions on Simulation in Archaeology and Archaeogaming (lectures and materials)
 Presentations and exercise materials for the course "Computational Archaeology", in the "Máster Interuniversitario en Arqueología Clásica Aplicada. Investigación y Transferencia" at the University Rovira i Virgili (9 May-6 June 2024).
 
 Slides: https://andros-spica.github.io/URV-computational-archaeology-2024/
@@ -7,7 +7,7 @@ Slides: https://andros-spica.github.io/URV-computational-archaeology-2024/
 In this module, you will learn the core concepts of simulation, particularly Agent-Based Modelling (ABM), as it is often used in archaeology to represent socio-ecological processes. Simulation modelling is mainly about formalising explanatory models (those we intuitively use), considering our current knowledge or assumptions and data. We will not focus on the technical skills in this methodology but rather on developing a basic understanding of the potential and limits of simulation in archaeology.
 
 ### Session 1
-Introduction to simulation as a scientific methodology and overview its application in archaeology, particularly under the scope of socioecological systems.
+This section introduces simulation as a scientific methodology and provides an overview of its application in archaeology, particularly in the context of socioecological systems.
 
 Slides: https://andros-spica.github.io/URV-computational-archaeology-2024/
 
@@ -70,7 +70,7 @@ Heckbert, Scott. 2013. ‘MayaSim’. Journal of Artificial Societies & Social S
 This module will briefly present a growing field within digital archaeology and humanities, Archaeogaming. With an immense diversity of manifestations, this field explores the intersection of archaeology, history and heritage studies with games, particularly video games, and innovative approaches in education and immersive technologies.
  
 ### Session 1
-Introduction to the concept and field of research generally known as archaeogaming. We will overview the value of games as learning tools and consider various implications of using videogames to represent the past, based on a growing variety of areas of research.
+This is an introduction to the concept and field of research generally known as archaeogaming. We will overview the value of games as learning tools and consider various implications of using video games to represent the past based on a growing variety of areas of research.
 
 Slides: https://andros-spica.github.io/URV-computational-archaeology-2024/
 
@@ -91,7 +91,7 @@ VALUE, dir. 2019. Let’s Play: Heaven’s Vault Part 1.
 [Play Video](https://www.youtube.com/watch?v=BQQ9mh6UGyQ)
  
 ### Session 2
-In a seminar format, we will describe our previous experience with video games, present which games were played and discuss critically their value for learning about archaeology or the past.
+In a seminar format, we will describe our previous experience with video games, present which games we played, and critically discuss their value for learning about archaeology or the past.
 
 ### References
 Cruz, Matheus Morais. 2022. ‘Digital Archaeology, Cyber-Archaeology and Archaeogaming: Possibilities for a Discipline Facing the Digital World’. Cadernos de Educação Tecnologia e Sociedade 15 (se2): 53–65. http://brajets.com/index.php/brajets/article/view/1043.
